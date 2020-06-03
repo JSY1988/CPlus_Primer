@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Msvc build",
+            "type": "shell",
+            "command": "cl.exe",
+            "args": [
+                //"/utf-8",//指定代码编码
+                "/ZI",//生成完整的调试信息
+                "/nologo",//取消显示启动版权标志
+                "/WX-",//将警告视为错误
+                "/sdl-",//SDL检查
+                "/diagnostics:column", //诊断格式
+                "/Od", //优化 禁用
+                "/Oy-", //省略指针 否
+                "/Gm-",//启用最小生成
+                "/EHsc", //启用C++异常
+                "/RTC1", //基本运行时检查
+                "/MT",//使用多线程版本的Cruntime函数库
+                "/GS",//启用安全检查
+                "/fp:precise", //浮点模型 精度
+                "/Zc:wchar_t",//将WChar_t视为内置类型
+                "/Zc:forScope",//强制循环范围合规性
+                "/Zc:inline",//移除未经引用的代码和数据
+                "/W3",//警告等级
+                "/JMC",//仅支持我的代码
+                "/permissive-",//一致性开关
+                "/analyze-",//这是关闭代码分析功能
+                "/errorReport:prompt",//内部编译器错误报告 立即
+                "/Gd",//调用约定
+                "/FC",//使用完全路径
+                "/Fe:",//输出路径+文件名
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "${file}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile"
+        },
+    ]
+}

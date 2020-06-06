@@ -59,13 +59,13 @@ int main()
 					strcpy_s(szLocalAddr, sizeof(szLocalAddr), inet_ntoa(IpAddr));
 					IpAddr.S_un.S_addr = (u_long)pTcpTable->table[i].dwRemoteAddr;
 					strcpy_s(szRemoteAddr, sizeof(szRemoteAddr), inet_ntoa(IpAddr));
-					printf("\tProgram    name:%s\n", Buffer);
+					printf("\tProgram    name: %s\n", Buffer);
 					printf("\tLocal        IP: %s\n", szLocalAddr);
 					printf("\tLocal      port: %d\n", ntohs((u_short)pTcpTable->table[i].dwLocalPort));
 					printf("\tRemotely     IP: %s\n", szRemoteAddr);
 					printf("\tRemote     port: %d\n", ntohs((u_short)pTcpTable->table[i].dwRemotePort));
 					string strRemAddr(szRemoteAddr);
-					cout << "\tRemote address: " << ipl.getIpAddr(strRemAddr) << endl;
+					cout << "\tRemote  address: " << ipl.getIpAddr(strRemAddr) << endl;
 					printf("\t\n");
 				}
 			}

@@ -9,7 +9,7 @@ IPLocator::IPLocator(const string &ipdb_name)
     ipdb.open(ipdb_name.c_str(), ios::binary);
     if (!ipdb)
     {
-        cerr << "文件打开失败" << ipdb_name << endl;
+        cerr << "File failed to open" << ipdb_name << endl;
         return;
     }
     ipdb.read((char *)buf, 8);
@@ -29,7 +29,7 @@ string IPLocator::getVersion()
     std::ostringstream oss;
     oss << this->index_count;
     string total_item(oss.str());
-    version = version + " ?????????" + total_item + "??";
+    version = version + " " + total_item + "";
     return version;
 }
 

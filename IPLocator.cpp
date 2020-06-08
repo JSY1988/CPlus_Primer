@@ -1,4 +1,4 @@
-ï»¿#include "IPLocator.h"
+#include "IPLocator.h"
 #include <sstream>
 #include <iostream>
 using namespace std;
@@ -9,7 +9,7 @@ IPLocator::IPLocator(const string &ipdb_name)
     ipdb.open(ipdb_name.c_str(), ios::binary);
     if (!ipdb)
     {
-        cerr << "File failed to Open" << ipdb_name << endl;
+        cerr << "ÎÄ¼þ´ò¿ªÊ§°Ü" << ipdb_name << endl;
         return;
     }
     ipdb.read((char *)buf, 8);
@@ -29,7 +29,7 @@ string IPLocator::getVersion()
     std::ostringstream oss;
     oss << this->index_count;
     string total_item(oss.str());
-    version = version + "Version" + total_item + "Number";
+    version = version + "°æ±¾" + total_item + "ºÅ";
     return version;
 }
 

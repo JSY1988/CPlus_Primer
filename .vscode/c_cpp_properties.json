@@ -14,7 +14,7 @@
                 "_CONSOLE",
                 "_CRT_SECURE_NO_WARNINGS"
             ],
-            "windowsSdkVersion": "10.0.18362.0",
+            "windowsSdkVersion": "10.0.19041.0",
             "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Preview/VC/Tools/MSVC/14.27.29109/bin/Hostx64/x64/cl.exe",
             "cStandard": "c18",
             "cppStandard": "c++20",

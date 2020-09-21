@@ -49,7 +49,6 @@ int main()
                     IpAddr.S_un.S_addr = (u_long)pTcpTable->table[i].dwRemoteAddr;
                     strcpy_s(szRemoteAddr, sizeof(szRemoteAddr), inet_ntoa(IpAddr));
                     string time = GetTime();
-
                     cout << "时间    : " << time << endl;
                     cout << "进程 PID: " << pTcpTable->table[i].dwOwningPid << endl;
                     printf("进程名称: %s\n", Buffer);
@@ -68,6 +67,5 @@ int main()
         FREE(pTcpTable);
         return 1;
     }
-    system("pause");
     return 0;
 }

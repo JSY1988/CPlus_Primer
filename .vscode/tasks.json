@@ -1,0 +1,42 @@
+﻿{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Msvc build",
+            "command": "cl.exe",
+            "args": [
+                "/ZI",
+                "/nologo",
+                "/WX-",
+                "/sdl-",
+                "/diagnostics:column",
+                "/Od",
+                "/Oy-",
+                "/Gm-",
+                "/EHsc",
+                "/RTC1",
+                "/MT",
+                "/GS",
+                "/fp:precise",
+                "/Zc:wchar_t",
+                "/Zc:forScope",
+                "/Zc:inline",
+                "/W3",
+                "/JMC",
+                "/permissive-",
+                "/analyze-",
+                "/errorReport:prompt",
+                "/Gd",
+                "/FC",
+                "/Fe:",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "${file}"
+            ],
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": "build"
+        }
+    ]
+}

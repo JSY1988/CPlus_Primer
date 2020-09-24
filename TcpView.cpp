@@ -1,4 +1,4 @@
-#include "IPLocator.cpp"
+#include "IPLocator.hpp"
 using namespace std;
 extern string GetTime()
 {
@@ -67,5 +67,6 @@ int main()
         FREE(pTcpTable);
         return 1;
     }
+    system("pause");
     return 0;
 }

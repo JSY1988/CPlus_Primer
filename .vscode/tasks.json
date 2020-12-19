@@ -1,9 +1,11 @@
-{
+﻿{
+    // 有关 tasks.json 格式的文档，请参见
+    // https://go.microsoft.com/fwlink/?LinkId=733558
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Msvc build",
             "type": "shell",
+            "label": "Msvc build",
             "command": "cl.exe",
             "args": [
                 "/ZI", //生成完整的调试信息
@@ -16,6 +18,7 @@
                 "/Gm-", //启用最小生成
                 "/EHsc", //启用C++异常
                 "/RTC1", //基本运行时检查
+                //"/MDd", //多线程调试
                 "/MT", //使用多线程版本的Cruntime函数库
                 "/GS", //启用安全检查
                 "/fp:precise", //浮点模型 精度
@@ -33,14 +36,13 @@
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "${file}"
             ],
+            "problemMatcher": [
+                "$msCompile"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
-            },
-            "presentation": {
-                "reveal": "always"
-            },
-            "problemMatcher": "$msCompile"
-        },
+            }
+        }
     ]
 }

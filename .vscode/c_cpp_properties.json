@@ -1,5 +1,4 @@
 {
-    "version": 4,
     "configurations": [
         {
             "name": "Win32",
@@ -12,13 +11,15 @@
                 "_UNICODE",
                 "_MBCS",
                 "WIN32",
-                "_CONSOLE"
+                "_CONSOLE",
+                "_CRT_SECURE_NO_WARNINGS"
             ],
             "windowsSdkVersion": "10.0.19041.0",
-            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe",
-            "intelliSenseMode": "msvc-x64",
-            "cStandard": "c18",
-            "cppStandard": "c++20"
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Preview/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "msvc-x64"
         }
-    ]
+    ],
+    "version": 4
 }

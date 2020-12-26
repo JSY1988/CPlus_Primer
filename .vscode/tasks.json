@@ -1,4 +1,6 @@
 ﻿{
+    // 有关 tasks.json 格式的文档，请参见
+    // https://go.microsoft.com/fwlink/?LinkId=733558
     "version": "2.0.0",
     "tasks": [
         {
@@ -6,37 +8,41 @@
             "label": "Msvc build",
             "command": "cl.exe",
             "args": [
-                "/ZI",
-                "/nologo",
-                "/WX-",
-                "/sdl-",
-                "/diagnostics:column",
-                "/Od",
-                "/Oy-",
-                "/Gm-",
-                "/EHsc",
-                "/RTC1",
-                "/MT",
-                "/GS",
-                "/fp:precise",
-                "/Zc:wchar_t",
-                "/Zc:forScope",
-                "/Zc:inline",
-                "/W3",
-                "/JMC",
-                "/permissive-",
-                "/analyze-",
-                "/errorReport:prompt",
-                "/Gd",
-                "/FC",
-                "/Fe:",
+                "/ZI", //生成完整的调试信息
+                "/nologo", //取消显示启动版权标志
+                "/WX-", //将警告视为错误
+                "/sdl-", //SDL检查
+                "/diagnostics:column", //诊断格式
+                "/Od", //优化 禁用
+                "/Oy-", //省略指针 否
+                "/Gm-", //启用最小生成
+                "/EHsc", //启用C++异常
+                "/RTC1", //基本运行时检查
+                //"/MDd", //多线程调试
+                "/MT", //使用多线程版本的Cruntime函数库
+                "/GS", //启用安全检查
+                "/fp:precise", //浮点模型 精度
+                "/Zc:wchar_t", //将WChar_t视为内置类型
+                "/Zc:forScope", //强制循环范围合规性
+                "/Zc:inline", //移除未经引用的代码和数据
+                "/W3", //警告等级
+                "/JMC", //仅支持我的代码
+                "/permissive-", //一致性开关
+                "/analyze-", //这是关闭代码分析功能
+                "/errorReport:prompt", //内部编译器错误报告 立即
+                "/Gd", //调用约定
+                "/FC", //使用完全路径
+                "/Fe:", //输出路径+文件名
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "${file}"
             ],
             "problemMatcher": [
                 "$msCompile"
             ],
-            "group": "build"
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

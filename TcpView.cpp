@@ -49,14 +49,14 @@ int main()
                     IpAddr.S_un.S_addr = (u_long)pTcpTable->table[i].dwRemoteAddr;
                     strcpy_s(szRemoteAddr, sizeof(szRemoteAddr), inet_ntoa(IpAddr));
                     string time = GetTime();
-                    cout << "时间    : " << time << endl;
-                    cout << "进程 PID: " << pTcpTable->table[i].dwOwningPid << endl;
-                    printf("进程名称: %s\n", Buffer);
-                    printf("本地  IP: %s\n", szLocalAddr);
-                    printf("本地端口: %d\n", ntohs((u_short)pTcpTable->table[i].dwLocalPort));
-                    printf("远程  IP: %s\n", szRemoteAddr);
-                    printf("远程端口: %d\n", ntohs((u_short)pTcpTable->table[i].dwRemotePort));
-                    cout << "远程地址: " << ipl.getIpAddr(szRemoteAddr) << std::endl;
+                    cout << "???    : " << time << endl;
+                    cout << "???? PID: " << pTcpTable->table[i].dwOwningPid << endl;
+                    printf("????????: %s\n", Buffer);
+                    printf("????  IP: %s\n", szLocalAddr);
+                    printf("??????: %d\n", ntohs((u_short)pTcpTable->table[i].dwLocalPort));
+                    printf("???  IP: %s\n", szRemoteAddr);
+                    printf("?????: %d\n", ntohs((u_short)pTcpTable->table[i].dwRemotePort));
+                    cout << "?????: " << ipl.getIpAddr(szRemoteAddr) << std::endl;
                     printf("\n");
                 }
             }

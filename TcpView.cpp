@@ -1,4 +1,18 @@
-#include "IPLocator.hpp"
+﻿#include "IPLocator.hpp"
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#include <iphlpapi.h>
+#include <stdio.h>
+#include <windows.h>
+#include <string>
+#include <tlhelp32.h>
+#include <time.h>
+#include "tchar.h"
+#include "psapi.h"
+#pragma comment(lib, "iphlpapi.lib")
+#pragma comment(lib, "ws2_32.lib")
+#define MALLOC(x) HeapAlloc(GetProcessHeap(), 0, (x))
+#define FREE(x) HeapFree(GetProcessHeap(), 0, (x))
 using namespace std;
 extern string GetTime()
 {
@@ -8,7 +22,7 @@ extern string GetTime()
     strftime(Tmp, sizeof(Tmp), "%Y-%m-%d %H:%M:%S", localtime(&Timep));
     return Tmp;
 }
-int main()
+extern int main()
 {
     IPLocator ipl("QQWry.dat");
     PMIB_TCPTABLE_OWNER_PID pTcpTable;
@@ -17,7 +31,7 @@ int main()
     char szLocalAddr[128];
     char szRemoteAddr[128];
     struct in_addr IpAddr;
-    int i = 0;
+
     pTcpTable = (MIB_TCPTABLE_OWNER_PID *)MALLOC(sizeof(MIB_TCPTABLE_OWNER_PID));
     if (pTcpTable == NULL)
     {
@@ -33,10 +47,11 @@ int main()
             return 1;
         }
     }
+
     if ((dwRetVal = GetExtendedTcpTable(pTcpTable, &dwSize, TRUE, AF_INET, TCP_TABLE_OWNER_PID_ALL, 0)) == NO_ERROR)
     {
 
-        for (i = 0; i < (int)pTcpTable->dwNumEntries; i++)
+        for (int i = 0; i < (int)pTcpTable->dwNumEntries; i++)
         {
             HANDLE Handle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, pTcpTable->table[i].dwOwningPid);
             if (Handle)
@@ -49,14 +64,14 @@ int main()
                     IpAddr.S_un.S_addr = (u_long)pTcpTable->table[i].dwRemoteAddr;
                     strcpy_s(szRemoteAddr, sizeof(szRemoteAddr), inet_ntoa(IpAddr));
                     string time = GetTime();
-                    cout << "???    : " << time << endl;
-                    cout << "???? PID: " << pTcpTable->table[i].dwOwningPid << endl;
-                    printf("????????: %s\n", Buffer);
-                    printf("????  IP: %s\n", szLocalAddr);
-                    printf("??????: %d\n", ntohs((u_short)pTcpTable->table[i].dwLocalPort));
-                    printf("???  IP: %s\n", szRemoteAddr);
-                    printf("?????: %d\n", ntohs((u_short)pTcpTable->table[i].dwRemotePort));
-                    cout << "?????: " << ipl.getIpAddr(szRemoteAddr) << std::endl;
+                    printf("时间    : %s\n", time);
+                    printf("进程 PID: %d\n", pTcpTable->table[i].dwOwningPid);
+                    printf("进程名称: %s\n", Buffer);
+                    printf("本地  IP: %s\n", szLocalAddr);
+                    printf("本地端口: %d\n", ntohs((u_short)pTcpTable->table[i].dwLocalPort));
+                    printf("远程  IP: %s\n", szRemoteAddr);
+                    printf("远程端口: %d\n", ntohs((u_short)pTcpTable->table[i].dwRemotePort));
+                    cout << "远程地址: " << ipl.getIpAddr(szRemoteAddr) << std::endl;
                     printf("\n");
                 }
             }
@@ -66,6 +81,11 @@ int main()
     {
         FREE(pTcpTable);
         return 1;
+    }
+    if (pTcpTable != NULL)
+    {
+        FREE(pTcpTable);
+        pTcpTable = NULL;
     }
     system("pause");
     return 0;
